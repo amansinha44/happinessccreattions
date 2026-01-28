@@ -91,7 +91,7 @@ const Home = () => {
           <div className="relative group z-10">
             <div className="absolute -inset-1 bg-gradient-to-r from-yellow-500/20 to-purple-600/20 rounded-3xl blur-xl opacity-50"></div>
             <div className="relative">
-              <h2 className="text-4xl font-bold mb-6">Welcome to <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400">Happiness Creations</span></h2>
+              <h2 className="text-4xl font-bold mb-6">Welcome to <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400">Happiness Ccreattions</span></h2>
               <p className="text-gray-300 leading-relaxed mb-6 text-lg">
                 Are you struggling with career blockages, relationship issues, or financial instability? The answers often lie in the <span className="text-yellow-400">vibrations</span> of your name and birth date.
               </p>
