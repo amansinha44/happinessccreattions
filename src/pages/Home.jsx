@@ -21,7 +21,8 @@ const Home = () => {
     <div className="min-h-screen bg-black text-white font-sans overflow-x-hidden">
       
       {/* --- HERO SECTION --- */}
-      <div className="relative min-h-screen flex items-center justify-center overflow-hidden">
+      {/* FIX: 'pt-32' add kiya hai taaki mobile par content navbar ke niche na dabbe */}
+      <div className="relative min-h-screen flex items-center justify-center overflow-hidden pt-32 md:pt-0">
         
         {/* Background Animation */}
         <div className="absolute inset-0">
@@ -46,19 +47,21 @@ const Home = () => {
 
         {/* Hero Content */}
         <div className="relative z-10 text-center px-6 max-w-5xl mx-auto space-y-8">
+          
+          {/* Badge */}
           <div className="inline-flex items-center gap-2 px-6 py-2 bg-white/10 border border-white/20 rounded-full text-yellow-400 text-sm font-medium backdrop-blur-md mb-4 animate-fade-in-down">
             <Sparkles size={16} className="animate-pulse" />
-            <span>Professional Numerology & Vastu Solutions</span>
+            <span className="text-xs md:text-sm text-left">Professional Numerology & Vastu Solutions</span>
           </div>
 
-          <h1 className="text-6xl md:text-8xl font-bold leading-tight tracking-tight animate-fade-in-up">
+          <h1 className="text-5xl md:text-8xl font-bold leading-tight tracking-tight animate-fade-in-up">
             Align Your Numbers. <br />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 via-orange-500 to-red-500 drop-shadow-2xl">
               Transform Your Life.
             </span>
           </h1>
 
-          <p className="text-xl text-gray-300 max-w-2xl mx-auto animate-fade-in-up delay-100">
+          <p className="text-lg md:text-xl text-gray-300 max-w-2xl mx-auto animate-fade-in-up delay-100">
             Professional Numerology & Vastu Solutions by Amit Gupta. Unlock your true potential through the ancient science of numbers.
           </p>
 
@@ -76,8 +79,7 @@ const Home = () => {
       </div>
 
 
-      {/* --- INTRODUCTION SECTION --- */}
-          {/* --- INTRODUCTION SECTION (Updated Visual) --- */}
+      {/* --- INTRODUCTION SECTION (With Cosmic Wheel) --- */}
       <section className="py-24 px-6 bg-[#0a0f1e] relative overflow-hidden">
         
         {/* Background Decor */}
@@ -111,7 +113,7 @@ const Home = () => {
             </div>
           </div>
           
-          {/* Right Side: The "Gazab" Cosmic Wheel (No Image needed, Pure CSS Art) */}
+          {/* Right Side: The Cosmic Wheel */}
           <div className="flex justify-center items-center relative h-[400px]">
              
              {/* Center Glow */}
@@ -242,7 +244,7 @@ const Home = () => {
   );
 };
 
-// --- Reusable Components for Clean Code ---
+// --- Reusable Components ---
 
 const FeatureCard = ({ icon, title, desc }) => (
   <div className="bg-[#1e293b]/40 border border-white/10 p-8 rounded-2xl hover:bg-white/5 transition-all hover:-translate-y-2 group">
