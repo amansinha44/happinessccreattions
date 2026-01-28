@@ -11,7 +11,7 @@ import Home from './pages/Home';
 import About from './pages/About';
 import Services from './pages/Services';
 import Journey from './pages/Journey';
-import Contact from './pages/Contact'; 
+import Contact from './pages/ContactUs; 
 
 function App() {
   return (
