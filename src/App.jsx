@@ -16,7 +16,7 @@ import Contact from './pages/ContactUs';
 function App() {
   return (
     <Router>
-    
+    <ScrollToTop />
       
       <div className="bg-[#0f172a] min-h-screen text-white font-sans selection:bg-purple-500/30">
         <Navbar />
