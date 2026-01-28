@@ -76,7 +76,7 @@ const About = () => {
             {/* The Bio Text */}
             <div className="space-y-6 text-gray-300 text-lg leading-relaxed">
               <p>
-                Amit Gupta is a distinguished Numerologist and Vastu Consultant based in <strong className="text-white">Ghaziabad, Uttar Pradesh</strong>. With a deep passion for occult sciences, Amit founded <strong className="text-purple-400">Happiness Creations</strong> with a single mission: to bring clarity, peace, and prosperity to people's lives.
+                Amit Gupta is a distinguished Numerologist and Vastu Consultant based in <strong className="text-white">Ghaziabad, Uttar Pradesh</strong>. With a deep passion for occult sciences, Amit founded <strong className="text-purple-400">Happiness Ccreattions</strong> with a single mission: to bring clarity, peace, and prosperity to people's lives.
               </p>
               <p>
                 Unlike traditional astrologers who may focus solely on fear-based predictions, Amit believes in <strong className="text-white border-b-2 border-purple-500/50">empowerment</strong>. His approach combines ancient wisdom with modern practicality.
