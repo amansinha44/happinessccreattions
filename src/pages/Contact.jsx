@@ -1,38 +1,7 @@
-import React, { useRef, useState } from 'react';
+import React from 'react';
 import { MapPin, Phone, Mail, Instagram, Facebook, Youtube, Send, Calendar, Clock, Globe, MessageCircle } from 'lucide-react';
-import emailjs from '@emailjs/browser'; // Library Import ki
 
 const Contact = () => {
-  const form = useRef(); // Form ka reference
-  const [isSubmitting, setIsSubmitting] = useState(false); // Loading state
-
-  // --- EMAIL SENDING FUNCTION ---
-  const sendEmail = (e) => {
-    e.preventDefault(); // Page refresh hone se rokega
-    setIsSubmitting(true); // Button ko loading karega
-
-    // !!! YAHAN APNI KEYS REPLACE KAREIN !!!
-    const SERVICE_ID = "service_kr09vii";      // E.g., service_x8s9f9
-    const TEMPLATE_ID = "template_ockprwg";    // E.g., template_8d7s8d
-    const PUBLIC_KEY = "8kwbUa-O0zs4DjObX";      // E.g., user_J8s9d8s9d
-
-    emailjs
-      .sendForm(SERVICE_ID, TEMPLATE_ID, form.current, {
-        publicKey: PUBLIC_KEY,
-      })
-      .then(
-        () => {
-          alert('SUCCESS! Your message has been sent to Amit Gupta.');
-          setIsSubmitting(false);
-          e.target.reset(); // Form clear kar dega
-        },
-        (error) => {
-          alert('FAILED... Please try again later. Error: ' + error.text);
-          setIsSubmitting(false);
-        },
-      );
-  };
-
   return (
     <div className="min-h-screen bg-[#050505] text-white font-sans pt-32 pb-20 px-6 relative overflow-hidden">
       
@@ -58,9 +27,13 @@ const Contact = () => {
 
         <div className="grid lg:grid-cols-2 gap-12 items-start">
           
-          {/* --- LEFT SIDE: INFO --- */}
+          {/* --- LEFT SIDE: INFO & MAP --- */}
           <div className="space-y-8 animate-fade-in-up">
+            
+            {/* Contact Details Cards */}
             <div className="grid gap-6">
+              
+              {/* ADDRESS CARD */}
               <ContactCard 
                 icon={<MapPin className="text-red-400" />} 
                 title="Visit Us" 
@@ -69,6 +42,8 @@ const Contact = () => {
                 href="https://goo.gl/maps/placeholder" 
                 subValue="Click to view on Google Maps"
               />
+
+              {/* EMAIL CARD */}
               <ContactCard 
                 icon={<Mail className="text-blue-400" />} 
                 title="Email Us" 
@@ -76,6 +51,8 @@ const Contact = () => {
                 isLink={true} 
                 href="mailto:9amitgupta99@gmail.com"
               />
+
+              {/* PHONE CARD */}
               <ContactCard 
                 icon={<Phone className="text-green-400" />} 
                 title="Phone / WhatsApp" 
@@ -85,98 +62,142 @@ const Contact = () => {
               />
             </div>
 
+            {/* Social Media Section */}
             <div className="bg-[#1e293b]/30 border border-white/5 p-8 rounded-3xl backdrop-blur-md">
               <h3 className="text-xl font-bold mb-2">Stay Connected</h3>
               <p className="text-gray-400 text-sm mb-6">Follow us for daily tips and lucky numbers.</p>
+              
               <div className="flex gap-4 flex-wrap">
-                <SocialBtn icon={<Youtube size={20} />} label="YouTube" color="hover:bg-red-600" href="https://www.youtube.com/@happinessccreattions9" />
-                <SocialBtn icon={<Instagram size={20} />} label="Instagram" color="hover:bg-pink-600" href="https://www.instagram.com/happinessccreattions/" />
-                <SocialBtn icon={<Facebook size={20} />} label="Facebook" color="hover:bg-blue-600" href="https://www.facebook.com/9amitgupta" />
-                <SocialBtn icon={<MessageCircle size={20} />} label="Whatsapp" color="hover:bg-green-600" href="https://whatsapp.com/channel/0029VbBwGqG6LwHtOqjVnu3h" />
+                <SocialBtn 
+                  icon={<Youtube size={20} />} 
+                  label="YouTube" 
+                  color="hover:bg-red-600" 
+                  href="https://www.youtube.com/@happinessccreattions9" 
+                />
+                <SocialBtn 
+                  icon={<Instagram size={20} />} 
+                  label="Instagram" 
+                  color="hover:bg-pink-600" 
+                  href="https://www.instagram.com/happinessccreattions/" 
+                />
+                <SocialBtn 
+                  icon={<Facebook size={20} />} 
+                  label="Facebook" 
+                  color="hover:bg-blue-600" 
+                  href="https://www.facebook.com/9amitgupta" 
+                />
+                {/* Fixed: Use MessageCircle instead of Whatsapp to avoid crash */}
+                <SocialBtn 
+                  icon={<MessageCircle size={20} />} 
+                  label="Whatsapp" 
+                  color="hover:bg-green-600" 
+                  href="https://whatsapp.com/channel/0029VbBwGqG6LwHtOqjVnu3h" 
+                />
               </div>
             </div>
 
+            {/* Google Map */}
             <div className="h-64 w-full rounded-3xl overflow-hidden border border-white/10 relative group">
               <div className="absolute inset-0 bg-indigo-900/20 mix-blend-overlay pointer-events-none z-10"></div>
               <iframe 
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3502.562094578505!2d77.3606!3d28.5801!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390ce5a43173357b%3A0x37ffce30c87cc03f!2sNoida%2C%20Uttar%20Pradesh!5e0!3m2!1sen!2sin!4v1625123456789!5m2!1sen!2sin" 
-                width="100%" height="100%" style={{ border: 0, filter: 'invert(90%) hue-rotate(180deg)' }} 
-                allowFullScreen="" loading="lazy" className="grayscale hover:grayscale-0 transition-all duration-700 w-full h-full"
+                width="100%" 
+                height="100%" 
+                style={{ border: 0, filter: 'invert(90%) hue-rotate(180deg)' }} 
+                allowFullScreen="" 
+                loading="lazy"
+                className="grayscale hover:grayscale-0 transition-all duration-700 w-full h-full"
                 title="Office Location"
               ></iframe>
             </div>
+
           </div>
 
-          {/* --- RIGHT SIDE: FORM (ACTIVE) --- */}
+          {/* --- RIGHT SIDE: CONSULTATION FORM --- */}
           <div className="bg-[#0f1014] border border-white/10 p-8 md:p-10 rounded-[2.5rem] relative overflow-hidden group animate-fade-in-up delay-200">
+            
+            {/* Form Glow Effect */}
             <div className="absolute top-0 right-0 w-64 h-64 bg-purple-600/10 rounded-full blur-[80px] pointer-events-none"></div>
 
             <h3 className="text-2xl font-bold mb-6 relative z-10">Book a Consultation</h3>
             
-            <form ref={form} onSubmit={sendEmail} className="space-y-5 relative z-10">
+            <form className="space-y-5 relative z-10">
               
+              {/* Name */}
               <div className="space-y-2">
                 <label className="text-xs font-bold uppercase tracking-wider text-gray-500 ml-1">Full Name</label>
-                {/* NAME Attribute zaroori hai EmailJS ke liye */}
-                <input type="text" name="user_name" required placeholder="Enter your name" className="w-full bg-white/5 border border-white/10 rounded-xl p-4 text-white focus:border-purple-500 focus:bg-white/10 outline-none transition-all" />
+                <input type="text" placeholder="Enter your name" className="w-full bg-white/5 border border-white/10 rounded-xl p-4 text-white focus:border-purple-500 focus:bg-white/10 outline-none transition-all" />
               </div>
 
+              {/* Birth Details Grid */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div className="space-y-2">
                   <label className="text-xs font-bold uppercase tracking-wider text-gray-500 ml-1 flex items-center gap-1"><Calendar size={12}/> Date of Birth</label>
-                  <input type="date" name="dob" required className="w-full bg-white/5 border border-white/10 rounded-xl p-4 text-gray-300 focus:border-purple-500 focus:text-white outline-none transition-all" />
+                  <input type="date" className="w-full bg-white/5 border border-white/10 rounded-xl p-4 text-gray-300 focus:border-purple-500 focus:text-white outline-none transition-all" />
                 </div>
                 <div className="space-y-2">
                   <label className="text-xs font-bold uppercase tracking-wider text-gray-500 ml-1 flex items-center gap-1"><Clock size={12}/> Time of Birth</label>
-                  <input type="time" name="tob" className="w-full bg-white/5 border border-white/10 rounded-xl p-4 text-gray-300 focus:border-purple-500 focus:text-white outline-none transition-all" />
+                  <input type="time" className="w-full bg-white/5 border border-white/10 rounded-xl p-4 text-gray-300 focus:border-purple-500 focus:text-white outline-none transition-all" />
                 </div>
               </div>
 
+              {/* Place of Birth */}
               <div className="space-y-2">
                 <label className="text-xs font-bold uppercase tracking-wider text-gray-500 ml-1 flex items-center gap-1"><Globe size={12}/> Place of Birth</label>
-                <input type="text" name="pob" required placeholder="City, State, Country" className="w-full bg-white/5 border border-white/10 rounded-xl p-4 text-white focus:border-purple-500 focus:bg-white/10 outline-none transition-all" />
+                <input type="text" placeholder="City, State, Country" className="w-full bg-white/5 border border-white/10 rounded-xl p-4 text-white focus:border-purple-500 focus:bg-white/10 outline-none transition-all" />
               </div>
 
+              {/* Service Dropdown */}
               <div className="space-y-2">
                 <label className="text-xs font-bold uppercase tracking-wider text-gray-500 ml-1">Service Required</label>
                 <div className="relative">
-                  <select name="service" className="w-full bg-white/5 border border-white/10 rounded-xl p-4 text-white focus:border-purple-500 outline-none appearance-none cursor-pointer">
-                    <option className="bg-[#1e293b]" value="General Inquiry">Select a Service...</option>
-                    <option className="bg-[#1e293b]" value="Personal Reading">Personal Reading</option>
-                    <option className="bg-[#1e293b]" value="Business Numerology">Business Numerology</option>
-                    <option className="bg-[#1e293b]" value="Name Change">Name Change / Correction</option>
-                    <option className="bg-[#1e293b]" value="Vastu">Vastu Consultation</option>
-                    <option className="bg-[#1e293b]" value="Relationship">Relationship Compatibility</option>
+                  <select className="w-full bg-white/5 border border-white/10 rounded-xl p-4 text-white focus:border-purple-500 outline-none appearance-none cursor-pointer">
+                    <option className="bg-[#1e293b]">Select a Service...</option>
+                    <option className="bg-[#1e293b]">Personal Reading</option>
+                    <option className="bg-[#1e293b]">Business Numerology</option>
+                    <option className="bg-[#1e293b]">Name Change / Correction</option>
+                    <option className="bg-[#1e293b]">Vastu Consultation</option>
+                    <option className="bg-[#1e293b]">Relationship Compatibility</option>
                   </select>
-                  <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-gray-500">▼</div>
+                  <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-gray-500">
+                    ▼
+                  </div>
                 </div>
               </div>
 
+              {/* Message */}
               <div className="space-y-2">
                 <label className="text-xs font-bold uppercase tracking-wider text-gray-500 ml-1">Your Message</label>
-                <textarea name="message" rows="4" placeholder="How can we help you?" className="w-full bg-white/5 border border-white/10 rounded-xl p-4 text-white focus:border-purple-500 focus:bg-white/10 outline-none transition-all resize-none"></textarea>
+                <textarea rows="4" placeholder="How can we help you?" className="w-full bg-white/5 border border-white/10 rounded-xl p-4 text-white focus:border-purple-500 focus:bg-white/10 outline-none transition-all resize-none"></textarea>
               </div>
 
-              <button disabled={isSubmitting} className="w-full py-4 mt-2 bg-gradient-to-r from-purple-600 to-pink-600 rounded-xl font-bold uppercase tracking-widest text-sm hover:scale-[1.02] active:scale-[0.98] transition-transform shadow-lg shadow-purple-900/20 flex items-center justify-center gap-2 disabled:opacity-50">
-                {isSubmitting ? 'Sending...' : 'Submit Request'} <Send size={18} />
+              {/* Submit Button */}
+              <button className="w-full py-4 mt-2 bg-gradient-to-r from-purple-600 to-pink-600 rounded-xl font-bold uppercase tracking-widest text-sm hover:scale-[1.02] active:scale-[0.98] transition-transform shadow-lg shadow-purple-900/20 flex items-center justify-center gap-2">
+                Submit Request <Send size={18} />
               </button>
 
             </form>
           </div>
+
         </div>
       </div>
     </div>
   );
 };
 
-// ... Reusable Components (ContactCard & SocialBtn) same rahenge ...
+// --- Reusable Components ---
+
 const ContactCard = ({ icon, title, value, isLink, href, subValue }) => (
   <div className="flex items-center gap-4 p-4 bg-white/5 border border-white/5 rounded-2xl hover:bg-white/10 transition-colors group">
-    <div className="p-3 bg-white/5 rounded-xl border border-white/5 group-hover:scale-110 transition-transform">{icon}</div>
+    <div className="p-3 bg-white/5 rounded-xl border border-white/5 group-hover:scale-110 transition-transform">
+      {icon}
+    </div>
     <div>
       <h4 className="text-sm font-bold text-gray-400 uppercase tracking-wide">{title}</h4>
       {isLink ? (
-        <a href={href} className="text-lg font-semibold text-white hover:text-purple-400 transition-colors" target="_blank" rel="noopener noreferrer">{value}</a>
+        <a href={href} className="text-lg font-semibold text-white hover:text-purple-400 transition-colors" target="_blank" rel="noopener noreferrer">
+          {value}
+        </a>
       ) : (
         <p className="text-lg font-semibold text-white">{value}</p>
       )}
@@ -186,7 +207,12 @@ const ContactCard = ({ icon, title, value, isLink, href, subValue }) => (
 );
 
 const SocialBtn = ({ icon, label, color, href }) => (
-  <a href={href} target="_blank" rel="noopener noreferrer" className={`flex items-center gap-2 px-4 py-3 bg-white/5 rounded-xl border border-white/10 transition-all hover:-translate-y-1 ${color} group`}>
+  <a 
+    href={href} 
+    target="_blank" 
+    rel="noopener noreferrer"
+    className={`flex items-center gap-2 px-4 py-3 bg-white/5 rounded-xl border border-white/10 transition-all hover:-translate-y-1 ${color} group`}
+  >
     <div className="text-white group-hover:scale-110 transition-transform">{icon}</div>
     <span className="font-medium text-sm hidden md:block">{label}</span>
   </a>
