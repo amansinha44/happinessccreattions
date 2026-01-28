@@ -1,9 +1,5 @@
 import React from 'react';
-import { MapPin, Phone, Mail, Instagram, Facebook, Youtube, Send, Calendar, Clock, Globe } from 'lucide-react';
-// Note: Whatsapp icon lucide-react me nahi hota, isliye maine MessageCircle use kiya hai ya ise hata diya hai.
-// Agar aapke paas custom icon hai to thik hai, warn niche code me maine 'Phone' use kiya hai temporary fix ke liye.
-// Par kyunki aapne import me 'Whatsapp' likha tha jo shayad custom ho, main use waisa hi rakh raha hu.
-// Agar error aaye to 'Whatsapp' hata kar 'Phone' use karein.
+import { MapPin, Phone, Mail, Instagram, Facebook, Youtube, Send, Calendar, Clock, Globe, MessageCircle } from 'lucide-react';
 
 const Contact = () => {
   return (
@@ -37,16 +33,17 @@ const Contact = () => {
             {/* Contact Details Cards */}
             <div className="grid gap-6">
               
-              {/* FIXED: Removed random URL string and cleaned props */}
+              {/* ADDRESS CARD */}
               <ContactCard 
                 icon={<MapPin className="text-red-400" />} 
                 title="Visit Us" 
                 value="Sector 51, Noida, Uttar Pradesh, India"
                 isLink={true}
-                href="https://www.google.com/maps/place/Sector+51,+Noida,+Uttar+Pradesh"
+                href="https://goo.gl/maps/placeholder" 
                 subValue="Click to view on Google Maps"
               />
 
+              {/* EMAIL CARD */}
               <ContactCard 
                 icon={<Mail className="text-blue-400" />} 
                 title="Email Us" 
@@ -55,7 +52,14 @@ const Contact = () => {
                 href="mailto:9amitgupta99@gmail.com"
               />
 
-            
+              {/* PHONE CARD */}
+              <ContactCard 
+                icon={<Phone className="text-green-400" />} 
+                title="Phone / WhatsApp" 
+                value="+91-7428552116" 
+                isLink={true} 
+                href="https://wa.me/917428552116"
+              />
             </div>
 
             {/* Social Media Section */}
@@ -82,14 +86,13 @@ const Contact = () => {
                   color="hover:bg-blue-600" 
                   href="https://www.facebook.com/9amitgupta" 
                 />
-                {/* Agar 'Whatsapp' icon error de, toh ise 'Phone' se replace karein */}
+                {/* Fixed: Use MessageCircle instead of Whatsapp to avoid crash */}
                 <SocialBtn 
-                  icon={<Phone size={20} />} 
+                  icon={<MessageCircle size={20} />} 
                   label="Whatsapp" 
                   color="hover:bg-green-600" 
                   href="https://whatsapp.com/channel/0029VbBwGqG6LwHtOqjVnu3h" 
                 />
-                
               </div>
             </div>
 
@@ -97,7 +100,7 @@ const Contact = () => {
             <div className="h-64 w-full rounded-3xl overflow-hidden border border-white/10 relative group">
               <div className="absolute inset-0 bg-indigo-900/20 mix-blend-overlay pointer-events-none z-10"></div>
               <iframe 
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3504.667823577773!2d77.3606629!3d28.5746931!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390ce59926d7c867%3A0x6b776d54271378ac!2sSector%2051%2C%20Noida%2C%20Uttar%20Pradesh!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin" 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3502.562094578505!2d77.3606!3d28.5801!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390ce5a43173357b%3A0x37ffce30c87cc03f!2sNoida%2C%20Uttar%20Pradesh!5e0!3m2!1sen!2sin!4v1625123456789!5m2!1sen!2sin" 
                 width="100%" 
                 height="100%" 
                 style={{ border: 0, filter: 'invert(90%) hue-rotate(180deg)' }} 
@@ -164,4 +167,55 @@ const Contact = () => {
 
               {/* Message */}
               <div className="space-y-2">
-                <label className="text-xs font-bold
+                <label className="text-xs font-bold uppercase tracking-wider text-gray-500 ml-1">Your Message</label>
+                <textarea rows="4" placeholder="How can we help you?" className="w-full bg-white/5 border border-white/10 rounded-xl p-4 text-white focus:border-purple-500 focus:bg-white/10 outline-none transition-all resize-none"></textarea>
+              </div>
+
+              {/* Submit Button */}
+              <button className="w-full py-4 mt-2 bg-gradient-to-r from-purple-600 to-pink-600 rounded-xl font-bold uppercase tracking-widest text-sm hover:scale-[1.02] active:scale-[0.98] transition-transform shadow-lg shadow-purple-900/20 flex items-center justify-center gap-2">
+                Submit Request <Send size={18} />
+              </button>
+
+            </form>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  );
+};
+
+// --- Reusable Components ---
+
+const ContactCard = ({ icon, title, value, isLink, href, subValue }) => (
+  <div className="flex items-center gap-4 p-4 bg-white/5 border border-white/5 rounded-2xl hover:bg-white/10 transition-colors group">
+    <div className="p-3 bg-white/5 rounded-xl border border-white/5 group-hover:scale-110 transition-transform">
+      {icon}
+    </div>
+    <div>
+      <h4 className="text-sm font-bold text-gray-400 uppercase tracking-wide">{title}</h4>
+      {isLink ? (
+        <a href={href} className="text-lg font-semibold text-white hover:text-purple-400 transition-colors" target="_blank" rel="noopener noreferrer">
+          {value}
+        </a>
+      ) : (
+        <p className="text-lg font-semibold text-white">{value}</p>
+      )}
+       {subValue && <p className="text-xs text-gray-500 mt-1">{subValue}</p>}
+    </div>
+  </div>
+);
+
+const SocialBtn = ({ icon, label, color, href }) => (
+  <a 
+    href={href} 
+    target="_blank" 
+    rel="noopener noreferrer"
+    className={`flex items-center gap-2 px-4 py-3 bg-white/5 rounded-xl border border-white/10 transition-all hover:-translate-y-1 ${color} group`}
+  >
+    <div className="text-white group-hover:scale-110 transition-transform">{icon}</div>
+    <span className="font-medium text-sm hidden md:block">{label}</span>
+  </a>
+);
+
+export default Contact;
