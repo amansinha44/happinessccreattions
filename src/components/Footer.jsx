@@ -36,7 +36,7 @@ const Footer = () => {
               <FooterLink to="/" text="Home" />
               <FooterLink to="/about" text="About Amit Gupta" />
               <FooterLink to="/services" text="Our Services" />
-              <FooterLink to="/journey" text="Pricing & Plans" />
+              <FooterLink to="/journey" text="Journey" />
               <FooterLink to="/contact" text="Contact Us" />
             </ul>
           </div>
