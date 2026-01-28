@@ -55,13 +55,7 @@ const Contact = () => {
                 href="mailto:9amitgupta99@gmail.com"
               />
 
-              <ContactCard 
-                icon={<Phone className="text-green-400" />} 
-                title="Phone / WhatsApp" 
-                value="+91-7428552116" 
-                isLink={true} 
-                href="https://wa.me/917428552116"
-              />
+            
             </div>
 
             {/* Social Media Section */}
