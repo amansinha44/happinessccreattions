@@ -80,6 +80,13 @@ http://googleusercontent.com/map_location_reference/1
                   color="hover:bg-blue-600" 
                   href="https://www.facebook.com/9amitgupta" 
                 />
+                <SocialBtn 
+                  icon={<Whatsapp size={20} />} 
+                  label="Whatsapp" 
+                  color="hover:bg-blue-600" 
+                  href="https://whatsapp.com/channel/0029VbBwGqG6LwHtOqjVnu3h" 
+                />
+                
               </div>
             </div>
 
