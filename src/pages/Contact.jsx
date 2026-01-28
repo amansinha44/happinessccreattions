@@ -1,5 +1,5 @@
 import React from 'react';
-import { MapPin, Phone, Mail, Instagram, Facebook, Youtube, Send, Calendar, Clock, Globe } from 'lucide-react';
+import { MapPin, Phone, Mail, Instagram, Facebook, Whatsapp, Youtube, Send, Calendar, Clock, Globe } from 'lucide-react';
 
 const Contact = () => {
   return (
