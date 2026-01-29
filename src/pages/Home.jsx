@@ -51,7 +51,7 @@ const Home = () => {
           {/* Badge */}
           <div className="inline-flex items-center gap-2 px-6 py-2 bg-white/10 border border-white/20 rounded-full text-yellow-400 text-sm font-medium backdrop-blur-md mb-4 animate-fade-in-down">
             <Sparkles size={16} className="animate-pulse" />
-            <span className="text-xs md:text-sm text-left">Professional Numerology & Vastu Solutions</span>
+            <span className="text-xs md:text-sm text-left">Professional Numerology</span>
           </div>
 
           <h1 className="text-5xl md:text-8xl font-bold leading-tight tracking-tight animate-fade-in-up">
@@ -62,7 +62,7 @@ const Home = () => {
           </h1>
 
           <p className="text-lg md:text-xl text-gray-300 max-w-2xl mx-auto animate-fade-in-up delay-100">
-            Professional Numerology & Vastu Solutions by Amit Gupta. Unlock your true potential through the ancient science of numbers.
+            Professional Numerologys by Amit Gupta. Unlock your true potential through the ancient science of numbers.
           </p>
 
           <div className="pt-8 animate-fade-in-up delay-200">
@@ -96,7 +96,7 @@ const Home = () => {
                 Are you struggling with career blockages, relationship issues, or financial instability? The answers often lie in the <span className="text-yellow-400">vibrations</span> of your name and birth date.
               </p>
               <p className="text-gray-300 leading-relaxed text-lg">
-                Led by <strong>Amit Gupta</strong>, a renowned Numerologist in Ghaziabad, we combine the logic of Numerology with the wisdom of Vastu to align your life with success.
+                Led by <strong>Amit Gupta</strong>, a renowned Numerologist in Ghaziabad, we align your life with success with Numerology.
               </p>
               
               <div className="mt-8 flex gap-4">
