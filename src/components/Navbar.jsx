@@ -33,7 +33,7 @@ const Navbar = () => {
         {/* Logo */}
         <Link to="/" className="flex items-center space-x-2 group">
           <div className="w-10 h-10 bg-gradient-to-tr from-purple-600 to-pink-600 rounded-lg flex items-center justify-center font-bold text-white shadow-lg group-hover:scale-110 transition-transform">H</div>
-          <span className="text-xl font-bold tracking-tight text-white italic">Happiness Creations</span>
+          <span className="text-xl font-bold tracking-tight text-white italic">Happiness Ccreations</span>
         </Link>
 
         {/* Desktop Menu */}
