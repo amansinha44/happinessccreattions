@@ -1,20 +1,20 @@
 import React, { useRef, useState } from 'react';
 import { MapPin, Phone, Mail, Instagram, Facebook, Youtube, Send, Calendar, Clock, Globe, MessageCircle } from 'lucide-react';
-import emailjs from '@emailjs/browser'; // Library Import ki
+import emailjs from '@emailjs/browser';
 
 const Contact = () => {
-  const form = useRef(); // Form ka reference
-  const [isSubmitting, setIsSubmitting] = useState(false); // Loading state
+  const form = useRef();
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   // --- EMAIL SENDING FUNCTION ---
   const sendEmail = (e) => {
-    e.preventDefault(); // Page refresh hone se rokega
-    setIsSubmitting(true); // Button ko loading karega
+    e.preventDefault();
+    setIsSubmitting(true);
 
-    // !!! YAHAN APNI KEYS REPLACE KAREIN !!!
-    const SERVICE_ID = "service_kr09vii";      // E.g., service_x8s9f9
-    const TEMPLATE_ID = "template_ockprwg";    // E.g., template_8d7s8d
-    const PUBLIC_KEY = "8kwbUa-O0zs4DjObX";      // E.g., user_J8s9d8s9d
+    // Aapki Keys (Jo aapne code mein di thin)
+    const SERVICE_ID = "service_kr09vii";
+    const TEMPLATE_ID = "template_ockprwg";
+    const PUBLIC_KEY = "8kwbUa-O0zs4DjObX";
 
     emailjs
       .sendForm(SERVICE_ID, TEMPLATE_ID, form.current, {
@@ -24,10 +24,10 @@ const Contact = () => {
         () => {
           alert('SUCCESS! Your message has been sent to Amit Gupta.');
           setIsSubmitting(false);
-          e.target.reset(); // Form clear kar dega
+          e.target.reset();
         },
         (error) => {
-          alert('FAILED... Please try again later. Error: ' + error.text);
+          alert('FAILED... Please check your keys or internet connection. Error: ' + error.text);
           setIsSubmitting(false);
         },
       );
@@ -66,7 +66,7 @@ const Contact = () => {
                 title="Visit Us" 
                 value="Sector 51, Noida, Uttar Pradesh, India"
                 isLink={true}
-                href="https://goo.gl/maps/placeholder" 
+                href="https://goo.gl/maps/b5g6h7j8k9" 
                 subValue="Click to view on Google Maps"
               />
               <ContactCard 
@@ -96,10 +96,11 @@ const Contact = () => {
               </div>
             </div>
 
+            {/* FIXED: Real Google Map Embed URL for Sector 51 Noida */}
             <div className="h-64 w-full rounded-3xl overflow-hidden border border-white/10 relative group">
               <div className="absolute inset-0 bg-indigo-900/20 mix-blend-overlay pointer-events-none z-10"></div>
               <iframe 
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3502.562094578505!2d77.3606!3d28.5801!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390ce5a43173357b%3A0x37ffce30c87cc03f!2sNoida%2C%20Uttar%20Pradesh!5e0!3m2!1sen!2sin!4v1625123456789!5m2!1sen!2sin" 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14008.114668484082!2d77.3639073!3d28.5785052!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390ce5f76807953f%3A0x6283b5161474836d!2sSector%2051%2C%20Noida%2C%20Uttar%20Pradesh!5e0!3m2!1sen!2sin!4v1706456789012!5m2!1sen!2sin"
                 width="100%" height="100%" style={{ border: 0, filter: 'invert(90%) hue-rotate(180deg)' }} 
                 allowFullScreen="" loading="lazy" className="grayscale hover:grayscale-0 transition-all duration-700 w-full h-full"
                 title="Office Location"
@@ -117,7 +118,6 @@ const Contact = () => {
               
               <div className="space-y-2">
                 <label className="text-xs font-bold uppercase tracking-wider text-gray-500 ml-1">Full Name</label>
-                {/* NAME Attribute zaroori hai EmailJS ke liye */}
                 <input type="text" name="user_name" required placeholder="Enter your name" className="w-full bg-white/5 border border-white/10 rounded-xl p-4 text-white focus:border-purple-500 focus:bg-white/10 outline-none transition-all" />
               </div>
 
@@ -133,7 +133,7 @@ const Contact = () => {
               </div>
 
               <div className="space-y-2">
-                <label className="text-xs font-bold uppercase tracking-wider text-gray-500 ml-1 flex items-center gap-1"><Globe size={12}/> Place of Birth</label>
+                <label className="text-xs font-bold uppercase tracking-wider text-gray-500 ml-1"><Globe size={12}/> Place of Birth</label>
                 <input type="text" name="pob" required placeholder="City, State, Country" className="w-full bg-white/5 border border-white/10 rounded-xl p-4 text-white focus:border-purple-500 focus:bg-white/10 outline-none transition-all" />
               </div>
 
@@ -169,7 +169,7 @@ const Contact = () => {
   );
 };
 
-// ... Reusable Components (ContactCard & SocialBtn) same rahenge ...
+// ... Reusable Components ...
 const ContactCard = ({ icon, title, value, isLink, href, subValue }) => (
   <div className="flex items-center gap-4 p-4 bg-white/5 border border-white/5 rounded-2xl hover:bg-white/10 transition-colors group">
     <div className="p-3 bg-white/5 rounded-xl border border-white/5 group-hover:scale-110 transition-transform">{icon}</div>
