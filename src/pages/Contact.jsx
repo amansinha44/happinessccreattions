@@ -156,7 +156,6 @@ const Contact = () => {
                     <option className="bg-[#1e293b]">Personal Reading</option>
                     <option className="bg-[#1e293b]">Business Numerology</option>
                     <option className="bg-[#1e293b]">Name Change / Correction</option>
-                    <option className="bg-[#1e293b]">Vastu Consultation</option>
                     <option className="bg-[#1e293b]">Relationship Compatibility</option>
                   </select>
                   <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-gray-500">
