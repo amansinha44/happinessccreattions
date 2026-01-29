@@ -39,7 +39,7 @@ const About = () => {
               {/* Overlay Name Tag */}
               <div className="absolute bottom-0 left-0 w-full bg-gradient-to-t from-black via-black/80 to-transparent p-8">
                 <h2 className="text-3xl font-bold text-white">Amit Gupta</h2>
-                <p className="text-purple-300 font-medium">Numerologist & Vastu Consultant</p>
+                <p className="text-purple-300 font-medium">Numerologist</p>
                 <p className="text-gray-400 text-sm mt-1">Ghaziabad, Uttar Pradesh</p>
               </div>
             </div>
@@ -76,7 +76,7 @@ const About = () => {
             {/* The Bio Text */}
             <div className="space-y-6 text-gray-300 text-lg leading-relaxed">
               <p>
-                Amit Gupta is a distinguished Numerologist and Vastu Consultant based in <strong className="text-white">Ghaziabad, Uttar Pradesh</strong>. With a deep passion for occult sciences, Amit founded <strong className="text-purple-400">Happiness Ccreattions</strong> with a single mission: to bring clarity, peace, and prosperity to people's lives.
+                Amit Gupta is a distinguished Numerologist based in <strong className="text-white">Ghaziabad, Uttar Pradesh</strong>. With a deep passion for occult sciences, Amit founded <strong className="text-purple-400">Happiness Ccreattions</strong> with a single mission: to bring clarity, peace, and prosperity to people's lives.
               </p>
               <p>
                 Unlike traditional astrologers who may focus solely on fear-based predictions, Amit believes in <strong className="text-white border-b-2 border-purple-500/50">empowerment</strong>. His approach combines ancient wisdom with modern practicality.
@@ -92,7 +92,7 @@ const About = () => {
               />
               <ApproachCard 
                 icon={<Compass className="text-blue-400" />} 
-                title="Vastu & Harmony"
+                title="Harmony"
                 desc="Finding balance in your home and workspace."
               />
               <ApproachCard 
