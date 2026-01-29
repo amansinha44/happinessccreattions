@@ -1,17 +1,30 @@
 import React, { useRef, useState } from 'react';
 import { MapPin, Phone, Mail, Instagram, Facebook, Youtube, Send, Calendar, Clock, Globe, MessageCircle } from 'lucide-react';
 import emailjs from '@emailjs/browser';
+import ReCAPTCHA from "react-google-recaptcha"; // 1. Library Import ki
 
 const Contact = () => {
   const form = useRef();
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [captchaToken, setCaptchaToken] = useState(null); // 2. Captcha State banaya
 
-  // --- EMAIL SENDING FUNCTION ---
+  // 3. Captcha Handler
+  const onCaptchaChange = (val) => {
+    setCaptchaToken(val);
+  };
+
   const sendEmail = (e) => {
     e.preventDefault();
+
+    // 4. Check: Agar Captcha nahi kiya, toh rook do
+    if (!captchaToken) {
+      alert("Please verify that you are not a robot!");
+      return;
+    }
+
     setIsSubmitting(true);
 
-    // Aapki Keys (Jo aapne code mein di thin)
+    // KEYS (Apni EmailJS keys wahi rakhein jo pehle thi)
     const SERVICE_ID = "service_kr09vii";
     const TEMPLATE_ID = "template_ockprwg";
     const PUBLIC_KEY = "8kwbUa-O0zs4DjObX";
@@ -24,10 +37,12 @@ const Contact = () => {
         () => {
           alert('SUCCESS! Your message has been sent to Amit Gupta.');
           setIsSubmitting(false);
+          setCaptchaToken(null); // Reset state
           e.target.reset();
+          window.grecaptcha.reset(); // Captcha ko bhi reset karein
         },
         (error) => {
-          alert('FAILED... Please check your keys or internet connection. Error: ' + error.text);
+          alert('FAILED... Error: ' + error.text);
           setIsSubmitting(false);
         },
       );
@@ -42,7 +57,7 @@ const Contact = () => {
 
       <div className="max-w-7xl mx-auto relative z-10">
         
-        {/* --- HEADER --- */}
+        {/* HEADER */}
         <div className="text-center mb-16 animate-fade-in-down">
           <span className="text-purple-400 tracking-widest uppercase text-xs font-bold mb-2 block">Get in Touch</span>
           <h1 className="text-5xl md:text-7xl font-bold leading-tight mb-6">
@@ -58,30 +73,20 @@ const Contact = () => {
 
         <div className="grid lg:grid-cols-2 gap-12 items-start">
           
-          {/* --- LEFT SIDE: INFO --- */}
+          {/* LEFT SIDE: INFO */}
           <div className="space-y-8 animate-fade-in-up">
             <div className="grid gap-6">
               <ContactCard 
-                icon={<MapPin className="text-red-400" />} 
-                title="Visit Us" 
-                value="Sector 51, Noida, Uttar Pradesh, India"
-                isLink={true}
-                href="https://goo.gl/maps/b5g6h7j8k9" 
-                subValue="Click to view on Google Maps"
+                icon={<MapPin className="text-red-400" />} title="Visit Us" value="Sector 51, Noida, Uttar Pradesh, India"
+                isLink={true} href="https://goo.gl/maps/b5g6h7j8k9" subValue="Click to view on Google Maps"
               />
               <ContactCard 
-                icon={<Mail className="text-blue-400" />} 
-                title="Email Us" 
-                value="9amitgupta99@gmail.com" 
-                isLink={true} 
-                href="mailto:9amitgupta99@gmail.com"
+                icon={<Mail className="text-blue-400" />} title="Email Us" value="9amitgupta99@gmail.com" 
+                isLink={true} href="mailto:9amitgupta99@gmail.com"
               />
               <ContactCard 
-                icon={<Phone className="text-green-400" />} 
-                title="Phone / WhatsApp" 
-                value="+91-7428552116" 
-                isLink={true} 
-                href="https://wa.me/917428552116"
+                icon={<Phone className="text-green-400" />} title="Phone / WhatsApp" value="+91-7428552116" 
+                isLink={true} href="https://wa.me/917428552116"
               />
             </div>
 
@@ -96,7 +101,6 @@ const Contact = () => {
               </div>
             </div>
 
-            {/* FIXED: Real Google Map Embed URL for Sector 51 Noida */}
             <div className="h-64 w-full rounded-3xl overflow-hidden border border-white/10 relative group">
               <div className="absolute inset-0 bg-indigo-900/20 mix-blend-overlay pointer-events-none z-10"></div>
               <iframe 
@@ -108,7 +112,7 @@ const Contact = () => {
             </div>
           </div>
 
-          {/* --- RIGHT SIDE: FORM (ACTIVE) --- */}
+          {/* RIGHT SIDE: FORM */}
           <div className="bg-[#0f1014] border border-white/10 p-8 md:p-10 rounded-[2.5rem] relative overflow-hidden group animate-fade-in-up delay-200">
             <div className="absolute top-0 right-0 w-64 h-64 bg-purple-600/10 rounded-full blur-[80px] pointer-events-none"></div>
 
@@ -156,6 +160,15 @@ const Contact = () => {
                 <label className="text-xs font-bold uppercase tracking-wider text-gray-500 ml-1">Your Message</label>
                 <textarea name="message" rows="4" placeholder="How can we help you?" className="w-full bg-white/5 border border-white/10 rounded-xl p-4 text-white focus:border-purple-500 focus:bg-white/10 outline-none transition-all resize-none"></textarea>
               </div>
+              
+              {/* 5. CAPTCHA COMPONENT - Isme apni SITE KEY Dalein */}
+              <div className="py-2">
+                <ReCAPTCHA
+                  sitekey="6LcQBlosAAAAAC9T27Nx5E99JS8lqNnbNK0mKg2q" 
+                  onChange={onCaptchaChange}
+                  theme="dark"
+                />
+              </div>
 
               <button disabled={isSubmitting} className="w-full py-4 mt-2 bg-gradient-to-r from-purple-600 to-pink-600 rounded-xl font-bold uppercase tracking-widest text-sm hover:scale-[1.02] active:scale-[0.98] transition-transform shadow-lg shadow-purple-900/20 flex items-center justify-center gap-2 disabled:opacity-50">
                 {isSubmitting ? 'Sending...' : 'Submit Request'} <Send size={18} />
@@ -169,7 +182,7 @@ const Contact = () => {
   );
 };
 
-// ... Reusable Components ...
+// ... Reusable Components (same as before) ...
 const ContactCard = ({ icon, title, value, isLink, href, subValue }) => (
   <div className="flex items-center gap-4 p-4 bg-white/5 border border-white/5 rounded-2xl hover:bg-white/10 transition-colors group">
     <div className="p-3 bg-white/5 rounded-xl border border-white/5 group-hover:scale-110 transition-transform">{icon}</div>
