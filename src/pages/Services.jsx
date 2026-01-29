@@ -34,19 +34,10 @@ const Services = () => {
       bgGradient: "from-red-500/20 to-rose-500/20",
       iconBg: "bg-red-500"
     },
-    {
-      id: "04",
-      title: "Vastu Consultation",
-      subtitle: "Space & Energy",
-      icon: <Compass size={32} className="text-white" />,
-      desc: "Is your home blocking money flow? We balance the 5 elements (Earth, Water, Fire, Air, Space) to remove negative blockages.",
-      color: "group-hover:shadow-green-500/50 group-hover:border-green-500/50",
-      bgGradient: "from-green-500/20 to-emerald-500/20",
-      iconBg: "bg-green-500"
-    },
+   
     // --- NEW SERVICE 05 ---
     {
-      id: "05",
+      id: "04",
       title: "New Born Numerology",
       subtitle: "Foundation of Luck",
       icon: <Baby size={32} className="text-white" />,
@@ -57,7 +48,7 @@ const Services = () => {
     },
     // --- NEW SERVICE 06 ---
     {
-      id: "06",
+      id: "05",
       title: "Child Birth Planning",
       subtitle: "Timing & Destiny",
       icon: <Calendar size={32} className="text-white" />,
