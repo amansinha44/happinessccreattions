@@ -17,7 +17,7 @@ const Footer = () => {
           <div className="space-y-6">
             <Link to="/" className="flex items-center space-x-2">
               <div className="w-10 h-10 bg-gradient-to-tr from-purple-600 to-pink-600 rounded-lg flex items-center justify-center font-bold text-white shadow-lg">H</div>
-              <span className="text-xl font-bold text-white italic">Happiness Creations</span>
+              <span className="text-xl font-bold text-white italic">Happiness Ccreations</span>
             </Link>
             <p className="text-gray-400 text-sm leading-relaxed">
               Transforming Lives Through Numerology & Vastu. Unlock your true potential with Amit Gupta's expert guidance.
