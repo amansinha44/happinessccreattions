@@ -65,7 +65,7 @@ const Footer = () => {
           {/* Column 4: Newsletter (Bonus) */}
           <div>
             <h3 className="text-white font-bold mb-6">Weekly Wisdom</h3>
-            <p className="text-gray-400 text-sm mb-4">Get lucky numbers and vastu tips directly in your inbox.</p>
+            <p className="text-gray-400 text-sm mb-4">Get lucky numbers and tips directly in your inbox.</p>
             <div className="relative">
               <input 
                 type="email" 
