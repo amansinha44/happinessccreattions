@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Facebook, Instagram, Youtube, Mail, Phone, MapPin, ArrowRight } from 'lucide-react';
+import { Facebook, Instagram, Youtube, Mail, Phone, MapPin, ArrowRight, MessageCircle } from 'lucide-react'; // MessageCircle added
 
 const Footer = () => {
   return (
@@ -26,6 +26,8 @@ const Footer = () => {
               <SocialIcon icon={<Youtube size={20} />} href="https://www.youtube.com/@happinessccreattions9" color="hover:bg-red-600" />
               <SocialIcon icon={<Instagram size={20} />} href="https://www.instagram.com/happinessccreattions/" color="hover:bg-pink-600" />
               <SocialIcon icon={<Facebook size={20} />} href="https://www.facebook.com/9amitgupta" color="hover:bg-blue-600" />
+              {/* WhatsApp Added Here */}
+              <SocialIcon icon={<MessageCircle size={20} />} href="https://whatsapp.com/channel/0029VbBwGqG6LwHtOqjVnu3h" color="hover:bg-green-600" />
             </div>
           </div>
 
